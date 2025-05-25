@@ -1,0 +1,15 @@
+// יצירת הפרוייקט
+npm create vite@latest my-app
+
+// אם לא עובד, מומלץ להריץ את זה (במצב מנהל)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+// בחירת התיקייה של הפרוייקט
+cd my-app
+
+// התקנת תלויות (מודולים שקשורים לפרוייקט)
+npm install
+
+// הרצת הפרוייקט
+npm run dev
