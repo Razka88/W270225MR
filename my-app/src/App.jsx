@@ -1,7 +1,11 @@
 import './App.css'
+import Button from './components/button/Button'
 
 export default function App() {
   return (
-    <h1>שלום לכולם!</h1>
+    <div>
+      <h1>ברוכים הבאים ל-React!</h1>
+      <Button />
+    </div>
   )
 }
