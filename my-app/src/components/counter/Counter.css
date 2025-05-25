@@ -1,0 +1,18 @@
+.Counter {
+    text-align: center;
+}
+
+.Counter span {
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.Counter button {
+  background-color: aqua;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  color: black;
+  font-size: 24px;
+}
