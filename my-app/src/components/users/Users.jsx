@@ -5,6 +5,10 @@ import { users } from './data';
 export default function Users() {
   const [data, setData] = useState(users);
 
+  const remove = id => {
+    setData(data.filter(u => u.id != id));
+  }
+
   return (
     <div>
       {/* <ul>
@@ -32,7 +36,7 @@ export default function Users() {
                 <td>{u.lastName}</td>
                 <td>{u.email}</td>
                 <td>{u.phone}</td>
-                <td></td>
+                <td><button className='remove' onClick={() => remove(u.id)}>❌</button></td>
               </tr>
             )}
           </tbody>

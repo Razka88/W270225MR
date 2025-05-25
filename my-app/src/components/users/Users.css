@@ -29,3 +29,18 @@ th {
 tr:nth-child(even) {
     background-color: #ffffff15;
 }
+
+.remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove:hover {
+    scale: 1.8;
+}
+
+.remove:active {
+    scale: 3;
+}
