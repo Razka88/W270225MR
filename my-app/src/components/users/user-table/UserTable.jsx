@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Users.css'
+import './UserTable.css'
 import { users } from '../data';
 
 export default function UserTable() {
