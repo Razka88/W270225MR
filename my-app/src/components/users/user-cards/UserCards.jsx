@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './UserCards.css';
-import { users } from '../users/data';
+import { users } from '../data';
 import moment from 'moment'
 
 export default function UserCards() {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './Users.css'
-import { users } from './data';
+import { users } from '../data';
 
-export default function Users() {
+export default function UserTable() {
   const [data, setData] = useState(users);
 
   const remove = id => {

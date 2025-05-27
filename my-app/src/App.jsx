@@ -1,7 +1,6 @@
 import './App.css'
 import Counter from './components/counter/Counter'
-import UserCards from './components/user-cards/UserCards'
-import Users from './components/users/Users'
+import UserCards from './components/users/user-cards/UserCards'
 
 export default function App() {
   return (
