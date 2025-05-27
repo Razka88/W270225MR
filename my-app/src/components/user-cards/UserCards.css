@@ -1,6 +1,6 @@
 .UserCards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin: 30px;
 }
@@ -19,4 +19,21 @@
     color: white;
     padding: 6px 10px;
     font-size: 1.5em;
+}
+
+.card p {
+    margin: 12px 6px;
+}
+
+.card p a {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.fa-whatsapp {
+    color: green;
+}
+
+.fa-envelope {
+    color: #000000;
 }
