@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './UserCards.css';
 import { users } from '../users/data';
+import moment from 'moment'
 
 export default function UserCards() {
     const [userCards, setUserCards] = useState(users);
@@ -20,7 +21,7 @@ export default function UserCards() {
                         {x.email}
                         <a href={`mailto:${x.email}`}><i className='fa fa-envelope'></i></a>
                     </p>
-                    <p><b>תאריך לידה:</b> {x.birthday}</p>
+                    <p><b>תאריך לידה:</b> {moment(x.birthday).format('DD/MM/YYYY')}</p>
                 </div>
             )}
         </div>
