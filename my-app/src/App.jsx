@@ -1,5 +1,6 @@
 import './App.css'
 import Counter from './components/counter/Counter'
+import UserCards from './components/user-cards/UserCards'
 import Users from './components/users/Users'
 
 export default function App() {
@@ -7,7 +8,8 @@ export default function App() {
     <div>
       <h1>ברוכים הבאים ל-React!</h1>
       <Counter />
-      <Users />
+      {/* <Users /> */}
+      <UserCards />
     </div>
   )
 }

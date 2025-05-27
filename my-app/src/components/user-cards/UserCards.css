@@ -1,0 +1,22 @@
+.UserCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 30px;
+}
+
+.card {
+    min-height: 150px;
+    background-color: #ffffffcb;
+    border-radius: 8px;
+    box-shadow: 0 0 3px #0000005f;
+    color: black;
+    overflow: hidden;
+}
+
+.card header {
+    background-color: #7400da;
+    color: white;
+    padding: 6px 10px;
+    font-size: 1.5em;
+}
