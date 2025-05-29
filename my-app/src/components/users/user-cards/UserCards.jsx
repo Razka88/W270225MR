@@ -1,28 +1,31 @@
-import { useState } from 'react';
 import './UserCards.css';
 import { users } from '../data';
 import moment from 'moment'
 
-export default function UserCards() {
-    const [userCards, setUserCards] = useState(users);
+function Card({ user }) {
+    return (
+        <div className='card'>
+            <header>{user.firstName} {user.lastName}</header>
 
+            <p>
+                {user.phone}
+                <a href={`tel:${user.phone}`}><i className='fa fa-phone'></i></a>
+                <a href={`https://wa.me/${user.phone}`}><i className='fa fa-whatsapp'></i></a>
+            </p>
+            <p>
+                {user.email}
+                <a href={`mailto:${user.email}`}><i className='fa fa-envelope'></i></a>
+            </p>
+            <p><b>תאריך לידה:</b> {moment(user.birthday).format('DD/MM/YYYY')}</p>
+        </div>
+    )
+}
+
+export default function UserCards() {
     return (
         <div className='UserCards'>
-            {userCards.map(x =>
-                <div className='card' key={x.id}>
-                    <header>{x.firstName} {x.lastName}</header>
-
-                    <p>
-                        {x.phone}
-                        <a href={`tel:${x.phone}`}><i className='fa fa-phone'></i></a>
-                        <a href={`https://wa.me/${x.phone}`}><i className='fa fa-whatsapp'></i></a>
-                    </p>
-                    <p>
-                        {x.email}
-                        <a href={`mailto:${x.email}`}><i className='fa fa-envelope'></i></a>
-                    </p>
-                    <p><b>תאריך לידה:</b> {moment(x.birthday).format('DD/MM/YYYY')}</p>
-                </div>
+            {users.map(x =>
+                <Card user={x} key={x.id} />
             )}
         </div>
     )
