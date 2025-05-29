@@ -1,5 +1,13 @@
-export default function Square() {
+export default function Square({ bg, height, width, content }) {
+    // const { bg, height, width, content } = obj;
+
     return (
-        <div></div>
+        <div style={{
+            backgroundColor: bg,
+            height: height,
+            width: width
+        }}>
+            {content}
+        </div>
     )
 }

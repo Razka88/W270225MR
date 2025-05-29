@@ -8,7 +8,11 @@ export default function Home() {
 
         <Counter />
 
-        <Square />
+        <Square bg="yellow" height={250} width={600} content="טקסט לניסיון" />
+        <br />
+        <Square bg="red" height={400} width={700} content="טקסט לכישלון" />
+        <br />
+        <Square bg="purple" height={200} width={60} content="טקסט חדש" />
     </div>
   )
 }
