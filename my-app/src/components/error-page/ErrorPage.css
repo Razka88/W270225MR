@@ -1,0 +1,69 @@
+.notfound-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fce4ec;
+    color: #880e4f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    position: fixed;
+    inset: 0;
+}
+
+.error-container {
+    animation: float 2s ease-in-out infinite;
+}
+
+.emoji {
+    font-size: 5rem;
+    animation: spin 4s linear infinite;
+}
+
+.notfound-body h1 {
+    font-size: 6rem;
+    margin: 0;
+}
+
+.notfound-body p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.notfound-body a {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d81b60;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.notfound-body a:hover {
+    background-color: #ad1457;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
