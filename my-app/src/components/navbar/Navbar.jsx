@@ -8,6 +8,7 @@ export default function Navbar() {
         { route: '/', title: 'בית' },
         { route: '/users/table', title: 'טבלת משתמשים' },
         { route: '/users/cards', title: 'כרטיסי משתמשים' },
+        { route: '/tic-tac-toe', title: 'איקס עיגול' },
     ];
 
     return (
