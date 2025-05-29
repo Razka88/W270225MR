@@ -9,7 +9,7 @@ export default function UserCards() {
     return (
         <div className='UserCards'>
             {userCards.map(x =>
-                <div className='card'>
+                <div className='card' key={x.id}>
                     <header>{x.firstName} {x.lastName}</header>
 
                     <p>
