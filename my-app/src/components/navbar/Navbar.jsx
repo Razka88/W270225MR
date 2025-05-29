@@ -15,7 +15,7 @@ export default function Navbar() {
             <ul>
                 {navbar.map(x => 
                     <li key={x.route}>
-                        <Link className={path == x.route && 'active'} to={x.route}>
+                        <Link to={x.route} className={path == x.route ? 'active' : ''}>
                             {x.title}
                         </Link>
                     </li>
