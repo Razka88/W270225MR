@@ -13,3 +13,7 @@ npm install
 
 // הרצת הפרוייקט
 npm run dev
+
+
+// ניקוי תוכן הקובץ - App.jsx
+// ניקוי קבצי העיצוב - App.css, index.css
