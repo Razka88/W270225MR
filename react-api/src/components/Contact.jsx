@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 export default function Contact() {
     const [contacts, setContacts] = useState([]);
 
+    // פונקציה לקבלת הנתונים מהשרת
     const getContacts = async () => {
         const res = await fetch("https://api.shipap.co.il/contact");
         const data = await res.json();
@@ -11,6 +12,7 @@ export default function Contact() {
         setContacts(data);
     }
 
+    // קוראים לפונקציה בצורה הזאת ע"מ שזה יקרה רק בטעינה הראשונית
     useEffect(() => {
         getContacts();
     }, []);
