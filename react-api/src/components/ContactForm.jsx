@@ -9,6 +9,7 @@ export default function ContactForm() {
     });
 
     const dataChange = ev => {
+        console.log(ev);
         const { id, value } = ev.target;
 
         setFormData({
@@ -17,11 +18,29 @@ export default function ContactForm() {
         });
     }
 
+    const sendForm = async ev => {
+        ev.preventDefault();
+
+        const res = await fetch("https://api.shipap.co.il/contact", {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+
+        // לנקות את הטופס
+        // להוסיף את הנתונים החדשים למערך הקיים
+        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה
+        // בונוס: להסתיר את הטופס
+        // בונוס: להציג חיווי בעת השליחה / קבלת הנתונים
+    }
+
     return (
         <>
             <h1>ContactForm</h1>
 
-            <form>
+            <form onSubmit={sendForm}>
                 <label>
                     שם הפונה:
                     <input type="text" id="fullName" onChange={dataChange} />
