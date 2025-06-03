@@ -39,7 +39,7 @@ export default function Contact() {
                                 <td>{item.fullName}</td>
                                 <td>{item.phone}</td>
                                 <td>{item.email}</td>
-                                <td>{item.message}</td>
+                                <td>{item.message || '-'}</td>
                             </tr>
                         )
                     }
