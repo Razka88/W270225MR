@@ -43,3 +43,51 @@ td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+form {
+  width: 250px;
+  margin: 16px auto;
+  background-color: #b4efff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px #989898;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  display: block;
+  border: 1px solid black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  margin-top: 24px;
+  background-color: #282c34;
+  display: block;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  scale: 1.05;
+}
