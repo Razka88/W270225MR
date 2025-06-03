@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import moment from 'moment';
+import { useEffect, useState } from 'react';
 
 export default function Contact() {
     const [contacts, setContacts] = useState([]);
@@ -19,7 +19,32 @@ export default function Contact() {
         <>
             <h1>Contact</h1>
 
-            {contacts.map(x => <p style={{ color: 'white' }}>{x.fullName}</p>)}
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>תאריך</th>
+                        <th>שם הפונה</th>
+                        <th>טלפון</th>
+                        <th>אימייל</th>
+                        <th>תוכן</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        contacts.map((item, i) =>
+                            <tr key={item.id}>
+                                <td>{i + 1}</td>
+                                <td>{moment(item.createTime).format("DD/MM/YYYY")}</td>
+                                <td>{item.fullName}</td>
+                                <td>{item.phone}</td>
+                                <td>{item.email}</td>
+                                <td>{item.message}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
         </>
     )
 }
