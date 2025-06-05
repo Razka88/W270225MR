@@ -8,7 +8,7 @@ export default function Contact() {
     const getContacts = async () => {
         const res = await fetch("https://api.shipap.co.il/contact");
         const data = await res.json();
-
+        data.reverse();
         setContacts(data);
     }
 

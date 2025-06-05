@@ -29,7 +29,14 @@ export default function ContactForm() {
 
         const data = await res.json();
 
-        // לנקות את הטופס
+        setFormData({
+            fullName: '',
+            phone: '',
+            email: '',
+            message: '',
+        });
+
+        // לנקות את הטופס - ✔️
         // להוסיף את הנתונים החדשים למערך הקיים
         // לעדכן את הלקוח שהנתונים נשלחו בהצלחה
         // בונוס: להסתיר את הטופס
@@ -43,7 +50,7 @@ export default function ContactForm() {
             <form onSubmit={sendForm}>
                 <label>
                     שם הפונה:
-                    <input type="text" id="fullName" onChange={dataChange} />
+                    <input type="text" id="fullName" value={formData.fullName} onChange={dataChange} />
                 </label>
 
                 <label>
