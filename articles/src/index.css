@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;700;900&display=swap');
+
+* {
+  font-family: 'Rubik', sans-serif !important;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  direction: rtl;
+  padding-bottom: 200px;
+  background-color: #282c34;
+}
+
+h1 {
+  color: #61dafb;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  margin: auto;
+  background-color: white;
+}
+
+th {
+  background-color: #282c34;
+  color: #61dafb;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+form {
+  width: 250px;
+  margin: 16px auto;
+  background-color: #b4efff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px #989898;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  display: block;
+  border: 1px solid black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  margin-top: 24px;
+  background-color: #282c34;
+  display: block;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  scale: 1.05;
+}
+
+.snackbar {
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+.loaderFrame {
+  position: fixed;
+  background-color: #000000c7;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 16px solid #a1a1a1;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
