@@ -1,6 +1,8 @@
 import { useState } from "react"
 
 export default function ContactForm() {
+    const [isMsg, setIsMsg] = useState(false);
+    const [isLoader, setIsLoader] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         phone: '',
@@ -20,6 +22,7 @@ export default function ContactForm() {
 
     const sendForm = async ev => {
         ev.preventDefault();
+        setIsLoader(true);
 
         const res = await fetch("https://api.shipap.co.il/contact", {
             method: 'POST',
@@ -29,16 +32,21 @@ export default function ContactForm() {
 
         const data = await res.json();
 
+        setIsLoader(false);
+        setIsMsg(true);
+        setTimeout(() => setIsMsg(false), 2 * 1000);
+
         setFormData({
             fullName: '',
             phone: '',
             email: '',
             message: '',
         });
+        
 
-        // לנקות את הטופס - ✔️
+        // לנקות את הטופס ✔️
         // להוסיף את הנתונים החדשים למערך הקיים
-        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה
+        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה ✔️
         // בונוס: להסתיר את הטופס
         // בונוס: להציג חיווי בעת השליחה / קבלת הנתונים
     }
@@ -70,6 +78,9 @@ export default function ContactForm() {
 
                 <button>שלח</button>
             </form>
+
+            {isLoader && <div className="loaderFrame"><div className="loader"></div></div>}
+            {isMsg && <div className="snackbar">הטופס נשלח בהצלחה</div>}
         </>
     )
 }
