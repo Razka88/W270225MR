@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { useEffect, useState } from 'react';
+import ContactForm from './ContactForm';
 
 export default function Contact() {
     const [contacts, setContacts] = useState();
@@ -19,6 +20,8 @@ export default function Contact() {
 
     return (
         <>
+            <ContactForm />
+
             <h1>Contact</h1>
 
             <table>
