@@ -60,7 +60,7 @@ export default function ContactForm() {
         // לנקות את הטופס ✔️
         // להוסיף את הנתונים החדשים למערך הקיים
         // לעדכן את הלקוח שהנתונים נשלחו בהצלחה ✔️
-        // בונוס: להסתיר את הטופס
+        // בונוס: להסתיר את הטופס ✔️
         // בונוס: להציג חיווי בעת השליחה ✔️
     }
 
@@ -94,7 +94,6 @@ export default function ContactForm() {
                     <button>שלח</button>
                 </form>
             }
-            
 
             {isLoader && <div className="loaderFrame"><div className="loader"></div></div>}
             {isMsg && <div className="snackbar">הטופס נשלח בהצלחה</div>}

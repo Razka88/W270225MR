@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useEffect, useState } from 'react';
 
 export default function Contact() {
-    const [contacts, setContacts] = useState([]);
+    const [contacts, setContacts] = useState();
 
     // פונקציה לקבלת הנתונים מהשרת
     const getContacts = async () => {
@@ -34,7 +34,7 @@ export default function Contact() {
                 </thead>
                 <tbody>
                     {
-                        contacts.map((item, i) =>
+                        contacts?.map((item, i) =>
                             <tr key={item.id}>
                                 <td>{i + 1}</td>
                                 <td>{moment(item.createTime).format("DD/MM/YYYY")}</td>
@@ -47,6 +47,8 @@ export default function Contact() {
                     }
                 </tbody>
             </table>
+
+            {contacts && !contacts.length && <h1>אין נתונים</h1>}
         </>
     )
 }
