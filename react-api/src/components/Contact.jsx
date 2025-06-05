@@ -22,7 +22,7 @@ export default function Contact() {
         <>
             <ContactForm />
 
-            <h1>Contact</h1>
+            <h1>טפסים שהתקבלו</h1>
 
             <table>
                 <thead>
