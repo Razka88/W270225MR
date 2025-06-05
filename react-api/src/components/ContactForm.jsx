@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function ContactForm() {
+export default function ContactForm({ added }) {
     const [isMsg, setIsMsg] = useState(false);
     const [isLoader, setIsLoader] = useState(false);
     const [isSended, setIsSended] = useState(false);
@@ -12,7 +12,6 @@ export default function ContactForm() {
     });
 
     const dataChange = ev => {
-        console.log(ev);
         const { id, value } = ev.target;
 
         setFormData({
@@ -37,6 +36,8 @@ export default function ContactForm() {
 
         // המרת הנתונים שקיבלנו מהשרת לאובייקט
         const data = await res.json();
+
+        added(data);
 
         // עצירת חיווי הטעינה
         setIsLoader(false);

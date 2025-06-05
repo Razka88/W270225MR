@@ -20,7 +20,7 @@ export default function Contact() {
 
     return (
         <>
-            <ContactForm />
+            <ContactForm added={item => setContacts([item, ...contacts])} />
 
             <h1>טפסים שהתקבלו</h1>
 
