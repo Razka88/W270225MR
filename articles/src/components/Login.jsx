@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { MyContext } from "../App";
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -6,8 +7,11 @@ export default function Login() {
         password: '',
     });
 
+    const { snackbar, setIsLoader } = useContext(MyContext);
+
     const login = async ev => {
         ev.preventDefault();
+        setIsLoader(true);
 
         const res = await fetch(`https://api.shipap.co.il/login`, {
             credentials: 'include',
@@ -18,18 +22,22 @@ export default function Login() {
 
         if (res.ok) {
             const user = await res.json();
-
-            console.log(user);
+            snackbar(`${user.fullName} התחבר בהצלחה`);
+            setForm({
+                userName: '',
+                password: '',
+            });
         } else {
             const err = await res.text();
-
-            console.log(err);
+            snackbar(err);
         }
 
+        setIsLoader(false);
+
         // לשלוח את ההתחברות לשרת ✔️
-        // לנקות את הטופס
-        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה
-        // להציג את ה-Loader
+        // לנקות את הטופס ✔️
+        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה ✔️
+        // להציג את ה-Loader ✔️
         // לאחר שהלקוח התחבר, לכתוב את השם שלו בצירוף הודעת ברכה
     }
 
