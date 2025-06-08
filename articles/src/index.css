@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;700;900&display=swap');
 
 * {
-  font-family: 'Rubik', sans-serif !important;
+  font-family: 'Rubik', sans-serif;
 }
 
 html {
@@ -195,4 +195,39 @@ button.logout:active {
 header {
   color: white;
   padding: 8px;
+}
+
+td button {
+  background: none;
+  border-radius: 50%;
+  color: #000;
+  color: initial;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 5px 8px;
+  transition: .3s;
+  width: auto;
+}
+
+td button:hover {
+  background-color: #3c3c3c;
+  color: white;
+  box-shadow: 0 0 4px #d6d6d6;
+}
+
+td button.green:hover {
+  background-color: #3dbf23;
+}
+
+td button.red:hover {
+  background-color: #bf2323;
+}
+
+td button:active {
+  scale: 1.3;
+}
+
+tr td:last-child {
+  white-space: nowrap;
 }
