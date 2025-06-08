@@ -23,8 +23,6 @@ function App() {
   }, []);
 
   const getLoginStatus = async () => {
-    setIsLoader(true);
-
     const res = await fetch(`https://api.shipap.co.il/login`, {
       credentials: 'include',
     });
@@ -35,8 +33,6 @@ function App() {
     } else {
       setUser(null);
     }
-
-    setIsLoader(false);
   }
 
   const logout = async () => {
