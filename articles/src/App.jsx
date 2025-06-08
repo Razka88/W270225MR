@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import './App.css'
 import Login from './components/Login'
 import { useEffect } from 'react';
+import Articles from './components/Articles';
 
 export const MyContext = createContext();
 
@@ -22,7 +23,10 @@ function App() {
     getLoginStatus();
   }, []);
 
+  // בדיקה בטעינה הראשונית, האם היוזר מחובר
   const getLoginStatus = async () => {
+    setIsLoader(true);
+
     const res = await fetch(`https://api.shipap.co.il/login`, {
       credentials: 'include',
     });
@@ -33,6 +37,8 @@ function App() {
     } else {
       setUser(null);
     }
+
+    setIsLoader(false);
   }
 
   const logout = async () => {
@@ -55,6 +61,7 @@ function App() {
       <h1>ניהול כתבות</h1>
 
       {user === null && <Login />}
+      {user && <Articles />}
 
       {isLoader && <div className="loaderFrame"><div className="loader"></div></div>}
       {isSnackbar && <div className="snackbar">{snackbarText}</div>}
