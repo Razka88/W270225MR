@@ -7,7 +7,7 @@ export default function Login() {
         password: '',
     });
 
-    const { snackbar, setIsLoader } = useContext(MyContext);
+    const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
     const login = async ev => {
         ev.preventDefault();
@@ -23,22 +23,13 @@ export default function Login() {
         if (res.ok) {
             const user = await res.json();
             snackbar(`${user.fullName} התחבר בהצלחה`);
-            setForm({
-                userName: '',
-                password: '',
-            });
+            setUser(user);
         } else {
             const err = await res.text();
             snackbar(err);
         }
 
         setIsLoader(false);
-
-        // לשלוח את ההתחברות לשרת ✔️
-        // לנקות את הטופס ✔️
-        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה ✔️
-        // להציג את ה-Loader ✔️
-        // לאחר שהלקוח התחבר, לכתוב את השם שלו בצירוף הודעת ברכה ✔️
     }
 
     return (

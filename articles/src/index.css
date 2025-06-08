@@ -172,3 +172,27 @@ button:hover {
     transform: rotate(360deg);
   }
 }
+
+button.logout {
+  display: inline;
+  width: initial;
+  margin: 0 3px;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: red;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.logout:hover {
+  background-color: rgb(199, 0, 0);
+}
+
+button.logout:active {
+  scale: 1.2;
+}
+
+header {
+  color: white;
+  padding: 8px;
+}
