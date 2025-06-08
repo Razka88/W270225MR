@@ -23,6 +23,8 @@ function App() {
   }, []);
 
   const getLoginStatus = async () => {
+    setIsLoader(true);
+
     const res = await fetch(`https://api.shipap.co.il/login`, {
       credentials: 'include',
     });
@@ -30,7 +32,11 @@ function App() {
     if (res.ok) {
       const user = await res.json();
       setUser(user);
+    } else {
+      setUser(null);
     }
+
+    setIsLoader(false);
   }
 
   const logout = async () => {
@@ -43,7 +49,7 @@ function App() {
     setIsLoader(false);
 
     if (res.ok) {
-      setUser();
+      setUser(null);
     }
   }
 
@@ -52,7 +58,7 @@ function App() {
       {user && <header>ברוך הבא {user.fullName} <button className='logout' onClick={logout}>התנתק</button></header>}
       <h1>ניהול כתבות</h1>
 
-      {!user && <Login />}
+      {user === null && <Login />}
 
       {isLoader && <div className="loaderFrame"><div className="loader"></div></div>}
       {isSnackbar && <div className="snackbar">{snackbarText}</div>}
