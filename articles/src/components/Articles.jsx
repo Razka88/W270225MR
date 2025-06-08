@@ -19,6 +19,9 @@ export default function Articles() {
         getData();
     }, []);
 
+    // לאפשר למחוק כתבות
+    // להציג גם ככרטיסים
+
     return (
         <div>
             <table>
