@@ -6,10 +6,31 @@ export default function Login() {
         password: '',
     });
 
-    const login = ev => {
+    const login = async ev => {
         ev.preventDefault();
 
-        console.log(form);
+        const res = await fetch(`https://api.shipap.co.il/login`, {
+            credentials: 'include',
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(form),
+        });
+
+        if (res.ok) {
+            const user = await res.json();
+
+            console.log(user);
+        } else {
+            const err = await res.text();
+
+            console.log(err);
+        }
+
+        // לשלוח את ההתחברות לשרת ✔️
+        // לנקות את הטופס
+        // לעדכן את הלקוח שהנתונים נשלחו בהצלחה
+        // להציג את ה-Loader
+        // לאחר שהלקוח התחבר, לכתוב את השם שלו בצירוף הודעת ברכה
     }
 
     return (
