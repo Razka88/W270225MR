@@ -60,7 +60,6 @@ function App() {
   return (
     <MyContext.Provider value={{ snackbar, setIsLoader, setUser }}>
       {user && <header>ברוך הבא {user.fullName} <button className='logout' onClick={logout}>התנתק</button></header>}
-      <h1>ניהול כתבות</h1>
 
       {user === null && <Login />}
       {

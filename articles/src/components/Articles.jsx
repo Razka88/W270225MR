@@ -25,6 +25,8 @@ export default function Articles() {
 
     return (
         <div className="Articles">
+            <h1>ניהול כתבות</h1>
+
             <Link to="/add">
                 <button className="add"><i className="fa fa-plus"></i> כתבה חדשה</button>
             </Link>

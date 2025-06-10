@@ -250,3 +250,7 @@ tr td:last-child {
   margin-bottom: 10px;
   margin-top: -10px;
 }
+
+label {
+  text-align: right;
+}

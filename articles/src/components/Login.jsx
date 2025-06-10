@@ -34,6 +34,8 @@ export default function Login() {
 
     return (
         <>
+            <h1>התחברות</h1>
+
             <form>
                 <label>
                     שם משתמש:
