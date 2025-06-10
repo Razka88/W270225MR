@@ -1,9 +1,16 @@
 export default function ArticleAdd() {
+
+    const add = async ev => {
+        ev.preventDefault();
+
+
+    }
+    
     return (
         <>
             <h1>כתבה חדשה</h1>
 
-            <form>
+            <form onSubmit={add}>
                 <label>
                     כותרת:
                     <input type="text" id="headline" />
@@ -28,6 +35,8 @@ export default function ArticleAdd() {
                     קישור לתמונה:
                     <input type="text" id="imgUrl" />
                 </label>
+
+                <button>שמור <i className="fa fa-save"></i></button>
             </form>
         </>
     )
