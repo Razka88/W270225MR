@@ -22,10 +22,29 @@ export default function Articles() {
 
         setIsLoader(false);
     }
-    
+
     useEffect(() => {
         getData();
     }, []);
+
+    const remove = async id => {
+        if (!confirm("האם למחוק את הכתבה?")) {
+            return;
+        }
+
+        setIsLoader(true);
+
+        const res = await fetch(`https://api.shipap.co.il/articles/${id}`, {
+            credentials: 'include',
+            method: 'DELETE',
+        });
+
+        if (res.ok) {
+            setArticles(articles.filter(x => x.id != id));
+        }
+
+        setIsLoader(false);
+    }
 
     // לאפשר למחוק כתבות
     // להציג גם ככרטיסים
@@ -51,7 +70,7 @@ export default function Articles() {
                 </thead>
                 <tbody>
                     {
-                        articles.map((art, i) => 
+                        articles.map((art, i) =>
                             <tr key={art.id}>
                                 <td>{i + 1}</td>
                                 <td>{art.headline}</td>
@@ -60,9 +79,9 @@ export default function Articles() {
                                 <td>{art.views}</td>
                                 <td>
                                     <button className="green"><i className="fa fa-edit"></i></button>
-                                    <button className="red"><i className="fa fa-trash"></i></button>
+                                    <button className="red" onClick={() => remove(art.id)}><i className="fa fa-trash"></i></button>
                                 </td>
-                            </tr>    
+                            </tr>
                         )
                     }
                 </tbody>
