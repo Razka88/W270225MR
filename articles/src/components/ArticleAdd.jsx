@@ -42,9 +42,26 @@ export default function ArticleAdd() {
         });
     }
 
+    const getArticle = async id => {
+        setIsLoader(true);
+
+        const res = await fetch(`https://api.shipap.co.il/articles/${id}`, {
+            credentials: 'include',
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            setForm(data);
+        }
+
+        setIsLoader(false);
+    }
+
     useEffect(() => {
-        console.log(articleId);
-    }, []);
+        if (articleId) {
+            getArticle(articleId);
+        }
+    }, [articleId]);
 
     return (
         <div className="Articles">
@@ -53,7 +70,7 @@ export default function ArticleAdd() {
                 <button className="add"><i className="fa fa-angle-right"></i> לניהול כתבות</button>
             </Link>
 
-            <h1>כתבה חדשה</h1>
+            {articleId ? <h1>עריכת כתבה</h1> : <h1>כתבה חדשה</h1>}
 
             <form onSubmit={add}>
                 <label>
