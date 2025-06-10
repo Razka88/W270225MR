@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { MyContext } from "../App";
+import { useEffect } from "react";
 
 export default function ArticleAdd() {
     const [form, setForm] = useState({
@@ -13,6 +14,7 @@ export default function ArticleAdd() {
 
     const { snackbar, setIsLoader } = useContext(MyContext);
     const navigate = useNavigate();
+    const { articleId } = useParams();
 
     const add = async ev => {
         ev.preventDefault();
@@ -39,6 +41,10 @@ export default function ArticleAdd() {
             [id]: value,
         });
     }
+
+    useEffect(() => {
+        console.log(articleId);
+    }, []);
 
     return (
         <div className="Articles">
