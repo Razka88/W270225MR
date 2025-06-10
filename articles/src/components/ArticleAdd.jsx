@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function ArticleAdd() {
 
     const add = async ev => {
@@ -7,7 +9,12 @@ export default function ArticleAdd() {
     }
     
     return (
-        <>
+        <div className="Articles">
+            <br />
+            <Link to="/">
+                <button className="add"><i className="fa fa-angle-right"></i> לניהול כתבות</button>
+            </Link>
+
             <h1>כתבה חדשה</h1>
 
             <form onSubmit={add}>
@@ -38,6 +45,6 @@ export default function ArticleAdd() {
 
                 <button>שמור <i className="fa fa-save"></i></button>
             </form>
-        </>
+        </div>
     )
 }

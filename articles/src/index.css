@@ -254,3 +254,7 @@ tr td:last-child {
 label {
   text-align: right;
 }
+
+.Articles form {
+  width: 600px;
+}
