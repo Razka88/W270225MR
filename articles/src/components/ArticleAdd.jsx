@@ -16,8 +16,7 @@ export default function ArticleAdd() {
     const navigate = useNavigate();
     const { articleId } = useParams();
 
-    const add = async ev => {
-        ev.preventDefault();
+    const add = async () => {
         setIsLoader(true);
 
         const res = await fetch(`https://api.shipap.co.il/articles`, {
@@ -30,6 +29,32 @@ export default function ArticleAdd() {
         if (res.ok) {
             snackbar("הכתבה נוספה בהצלחה");
             navigate('/');
+        }
+    }
+
+    const update = async () => {
+        setIsLoader(true);
+
+        const res = await fetch(`https://api.shipap.co.il/articles/${articleId}`, {
+            credentials: 'include',
+            method: 'PUT',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(form),
+        });
+
+        if (res.ok) {
+            snackbar("הכתבה נשמרה בהצלחה");
+            navigate('/');
+        }
+    }
+
+    const save = ev => {
+        ev.preventDefault();
+
+        if (articleId) {
+            update();
+        } else {
+            add();
         }
     }
 
@@ -72,7 +97,7 @@ export default function ArticleAdd() {
 
             {articleId ? <h1>עריכת כתבה</h1> : <h1>כתבה חדשה</h1>}
 
-            <form onSubmit={add}>
+            <form onSubmit={save}>
                 <label>
                     כותרת:
                     <input type="text" id="headline" value={form.headline} onChange={change} />
