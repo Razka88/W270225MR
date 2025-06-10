@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import moment from 'moment';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { MyContext } from "../App";
 
 export default function Articles() {
     const [articles, setArticles] = useState([]);
-
+    const navigate = useNavigate();
     const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
     const getData = async () => {
@@ -46,8 +46,9 @@ export default function Articles() {
         setIsLoader(false);
     }
 
-    // לאפשר למחוק כתבות
-    // להציג גם ככרטיסים
+    const goToEdit = async id => {
+        navigate(`/article/${id}`);
+    }
 
     return (
         <div className="Articles">
@@ -78,7 +79,7 @@ export default function Articles() {
                                 <td>{moment(art.publishDate).format("DD/MM/YY")}</td>
                                 <td>{art.views}</td>
                                 <td>
-                                    <button className="green"><i className="fa fa-edit"></i></button>
+                                    <button className="green" onClick={() => goToEdit(art.id)}><i className="fa fa-edit"></i></button>
                                     <button className="red" onClick={() => remove(art.id)}><i className="fa fa-trash"></i></button>
                                 </td>
                             </tr>
