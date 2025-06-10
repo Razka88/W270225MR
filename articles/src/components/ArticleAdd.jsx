@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { MyContext } from "../App";
 
 export default function ArticleAdd() {
     const [form, setForm] = useState({
@@ -10,10 +11,24 @@ export default function ArticleAdd() {
         publishDate: '',
     });
 
+    const { snackbar, setIsLoader } = useContext(MyContext);
+    const navigate = useNavigate();
+
     const add = async ev => {
         ev.preventDefault();
+        setIsLoader(true);
 
-        console.log(form);
+        const res = await fetch(`https://api.shipap.co.il/articles`, {
+            credentials: 'include',
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(form),
+        });
+
+        if (res.ok) {
+            snackbar("הכתבה נוספה בהצלחה");
+            navigate('/');
+        }
     }
 
     const change = ev => {
@@ -24,7 +39,7 @@ export default function ArticleAdd() {
             [id]: value,
         });
     }
-    
+
     return (
         <div className="Articles">
             <br />
