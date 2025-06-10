@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import moment from 'moment';
 import { Link } from "react-router";
+import { MyContext } from "../App";
 
 export default function Articles() {
     const [articles, setArticles] = useState([]);
 
+    const { snackbar, setIsLoader, setUser } = useContext(MyContext);
+
     const getData = async () => {
+        setIsLoader(true);
+
         const res = await fetch(`https://api.shipap.co.il/articles`, {
             credentials: 'include',
         });
@@ -14,6 +19,8 @@ export default function Articles() {
             const data = await res.json();
             setArticles(data);
         }
+
+        setIsLoader(false);
     }
     
     useEffect(() => {
