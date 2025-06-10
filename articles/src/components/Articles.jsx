@@ -73,7 +73,7 @@ export default function Articles() {
                 <tbody>
                     {
                         articles.map((art, i) =>
-                            <tr key={art.id}>
+                            <tr key={art.id} onDoubleClick={() => goToEdit(art.id)}>
                                 <td>{i + 1}</td>
                                 <td>{art.headline}</td>
                                 <td>{moment(art.addedTime).format("DD/MM/YY")}</td>

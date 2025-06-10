@@ -83,9 +83,13 @@ export default function ArticleAdd() {
     }
 
     useEffect(() => {
+        // בודק אם אנחנו במצב עריכה, פונה לשרת ע"מ לבקש את הנתונים
         if (articleId) {
             getArticle(articleId);
         }
+
+        // גלילה למעלה
+        window.scroll(0,0);
     }, [articleId]);
 
     return (
