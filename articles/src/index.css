@@ -238,7 +238,11 @@ tr td:last-child {
   display: inline-block;
 }
 
-.Articles>button {
+.Articles a {
+  text-decoration: none;
+}
+
+.Articles .add {
   background-color: #61d9fa;
   color: #282c34;
   width: initial;

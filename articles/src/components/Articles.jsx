@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import moment from 'moment';
+import { Link } from "react-router";
 
 export default function Articles() {
     const [articles, setArticles] = useState([]);
@@ -24,7 +25,10 @@ export default function Articles() {
 
     return (
         <div className="Articles">
-            <button><i className="fa fa-plus"></i> כתבה חדשה</button>
+            <Link to="/add">
+                <button className="add"><i className="fa fa-plus"></i> כתבה חדשה</button>
+            </Link>
+
             <table>
                 <thead>
                     <tr>

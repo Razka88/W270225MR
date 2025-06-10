@@ -1,8 +1,10 @@
 import { createContext, useState } from 'react';
+import { Route, Routes } from 'react-router';
 import './App.css'
 import Login from './components/Login'
 import { useEffect } from 'react';
 import Articles from './components/Articles';
+import ArticleAdd from './components/ArticleAdd';
 
 export const MyContext = createContext();
 
@@ -61,7 +63,13 @@ function App() {
       <h1>ניהול כתבות</h1>
 
       {user === null && <Login />}
-      {user && <Articles />}
+      {
+        user && 
+        <Routes>
+          <Route path="/" element={<Articles />} />
+          <Route path="/add" element={<ArticleAdd />} />
+        </Routes>
+      }
 
       {isLoader && <div className="loaderFrame"><div className="loader"></div></div>}
       {isSnackbar && <div className="snackbar">{snackbarText}</div>}
