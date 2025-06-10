@@ -13,6 +13,7 @@ body {
   direction: rtl;
   padding-bottom: 200px;
   background-color: #282c34;
+  text-align: center;
 }
 
 h1 {
@@ -195,6 +196,7 @@ button.logout:active {
 header {
   color: white;
   padding: 8px;
+  text-align: right;
 }
 
 td button {
@@ -230,4 +232,17 @@ td button:active {
 
 tr td:last-child {
   white-space: nowrap;
+}
+
+.Articles {
+  display: inline-block;
+}
+
+.Articles>button {
+  background-color: #61d9fa;
+  color: #282c34;
+  width: initial;
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: -10px;
 }

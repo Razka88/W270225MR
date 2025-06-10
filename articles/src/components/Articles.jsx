@@ -23,7 +23,8 @@ export default function Articles() {
     // להציג גם ככרטיסים
 
     return (
-        <div>
+        <div className="Articles">
+            <button><i className="fa fa-plus"></i> כתבה חדשה</button>
             <table>
                 <thead>
                     <tr>
