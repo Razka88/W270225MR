@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Link } from "react-router";
 
 export default function News() {
     const [news, setNews] = useState([]);
@@ -19,24 +20,26 @@ export default function News() {
             {
                 news.map(x =>
                     <div className="Card" key={x.id}>
-                        <Card sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image={x.imgUrl}
-                                alt={x.headline}
-                            />
+                        <Link to={`/${x.id}`}>
+                            <Card sx={{ display: 'flex', flexDirection: 'column' }}>
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image={x.imgUrl}
+                                    alt={x.headline}
+                                />
 
-                            <CardContent>
-                                <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-                                    {x.headline}
-                                </Typography>
+                                <CardContent>
+                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+                                        {x.headline}
+                                    </Typography>
 
-                                <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
-                                    {x.description}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                                    <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
+                                        {x.description}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
                 )
             }
