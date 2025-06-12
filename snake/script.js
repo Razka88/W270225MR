@@ -29,6 +29,12 @@ function move(dir) {
 
     if (dir === 'left') {
         head++;
+    } else if (dir === 'right') {
+        head--;
+    } else if (dir === 'up') {
+        head -= width;
+    } else if (dir === 'down') {
+        head += width;
     }
 
     snake.unshift(head);
@@ -37,3 +43,14 @@ function move(dir) {
 }
 
 createBoard();
+
+window.addEventListener('keydown', ev => {
+    ev.preventDefault();
+
+    switch (ev.key) {
+        case 'ArrowUp': move('up'); break;
+        case 'ArrowRight': move('right'); break;
+        case 'ArrowDown': move('down'); break;
+        case 'ArrowLeft': move('left'); break;
+    }
+});
