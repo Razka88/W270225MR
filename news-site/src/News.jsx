@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react"
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 
 export default function News() {
     const [news, setNews] = useState([]);
@@ -17,10 +17,25 @@ export default function News() {
     return (
         <div className="news">
             {
-                news.map(x => 
-                    <div className="card">
-                        <h2>{x.headline}</h2>
-                    </div>
+                news.map(x =>
+                    <Card sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <CardMedia
+                            component="img"
+                            height="200"
+                            image={x.imgUrl}
+                            alt={x.headline}
+                        />
+
+                        <CardContent>
+                            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+                                {x.headline}
+                            </Typography>
+
+                            <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
+                                {x.description}
+                            </Typography>
+                        </CardContent>
+                    </Card>
                 )
             }
         </div>
