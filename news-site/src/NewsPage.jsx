@@ -36,6 +36,12 @@ export default function NewsPage() {
                         <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
                             {article.description}
                         </Typography>
+
+                        <hr />
+
+                        <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
+                            {article.content}
+                        </Typography>
                     </CardContent>
                 </Card>
             }
