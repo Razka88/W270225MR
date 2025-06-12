@@ -55,9 +55,15 @@ export default function Articles() {
         <div className="Articles">
             <h1>ניהול כתבות</h1>
 
-            <Link to="/add">
-                <button className="add"><i className="fa fa-plus"></i> כתבה חדשה</button>
-            </Link>
+            <div className="actions">
+                <Link to="/add">
+                    <button className="add"><i className="fa fa-plus"></i> כתבה חדשה</button>
+                </Link>
+
+                <Link to="/recycle-bin">
+                    <button className="add"><i className="fa fa-recycle"></i> סל מחזור</button>
+                </Link>
+            </div>
 
             <table>
                 <thead>

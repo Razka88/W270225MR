@@ -258,3 +258,8 @@ label {
 .Articles form {
   width: 600px;
 }
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

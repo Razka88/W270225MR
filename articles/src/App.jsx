@@ -5,6 +5,7 @@ import Login from './components/Login'
 import { useEffect } from 'react';
 import Articles from './components/Articles';
 import ArticleAdd from './components/ArticleAdd';
+import RecycleBin from './components/RecycleBin';
 
 export const MyContext = createContext();
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="/" element={<Articles />} />
           <Route path="/add" element={<ArticleAdd />} />
           <Route path="/article/:articleId" element={<ArticleAdd />} />
+          <Route path="/recycle-bin" element={<RecycleBin />} />
         </Routes>
       }
 
