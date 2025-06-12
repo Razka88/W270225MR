@@ -9,3 +9,12 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
+.Card {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Card:hover {
+    scale: 1.05;
+}

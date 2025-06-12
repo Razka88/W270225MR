@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 export default function News() {
     const [news, setNews] = useState([]);
@@ -18,24 +18,26 @@ export default function News() {
         <div className="news">
             {
                 news.map(x =>
-                    <Card sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <CardMedia
-                            component="img"
-                            height="200"
-                            image={x.imgUrl}
-                            alt={x.headline}
-                        />
+                    <div className="Card" key={x.id}>
+                        <Card sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardMedia
+                                component="img"
+                                height="200"
+                                image={x.imgUrl}
+                                alt={x.headline}
+                            />
 
-                        <CardContent>
-                            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-                                {x.headline}
-                            </Typography>
+                            <CardContent>
+                                <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+                                    {x.headline}
+                                </Typography>
 
-                            <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
-                                {x.description}
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                                <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
+                                    {x.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </div>
                 )
             }
         </div>
