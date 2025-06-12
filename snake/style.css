@@ -17,3 +17,7 @@ body {
     background: aquamarine;
     font-size: 6px;
 }
+
+.board>div.active {
+    background-color: blueviolet;
+}
