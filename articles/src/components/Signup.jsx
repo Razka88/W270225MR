@@ -9,7 +9,16 @@ export default function Signup() {
         password: '',
     });
 
+    const change = ev => {
+        // const id = ev.target.id;
+        // const value = ev.target.value;
+        const { id, value } = ev.target;
 
+        setForm({
+            ...form,
+            [id]: value,
+        });
+    }
 
 
     return (
@@ -19,22 +28,22 @@ export default function Signup() {
             <form>
                 <label>
                     <i className="fa fa-user"></i> שם מלא:
-                    <input type="text" id="fullName" value={form.fullName} />
+                    <input type="text" id="fullName" value={form.fullName} onChange={change} />
                 </label>
 
                 <label>
                     <i className="fa fa-envelope"></i> אימייל:
-                    <input type="text" id="email" value={form.email} />
+                    <input type="text" id="email" value={form.email} onChange={change} />
                 </label>
 
                 <label>
                 <i className="fa fa-address-card"></i> שם משתמש:
-                    <input type="text" id="userName" value={form.userName} />
+                    <input type="text" id="userName" value={form.userName} onChange={change} />
                 </label>
 
                 <label>
                     <i className="fa fa-asterisk"></i> סיסמה:
-                    <input type="password" id="password" value={form.password} />
+                    <input type="password" id="password" value={form.password} onChange={change} />
                 </label>
                 <button>הרשם</button>
             </form>
