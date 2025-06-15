@@ -1,6 +1,7 @@
 const height = 30;
 const width = 30;
 const snake = [7, 6, 5, 4, 3, 2, 1, 0];
+let head = snake[0];
 const board = document.querySelector('.board');
 board.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
 const divs = [];
@@ -20,15 +21,17 @@ function createBoard() {
 }
 
 function color() {
-    divs.forEach(div => div.classList.remove('active'));
+    divs.forEach(div => div.classList.remove('active', 'head', 'up', 'right', 'down', 'left'));
 
     snake.forEach(num => {
         divs[num].classList.add('active');
     });
+
+    divs[head].classList.add('head', direction);
 }
 
 function move(dir) {
-    let head = snake[0];
+    head = snake[0];
 
     if (dir === 'left') {
         if (direction == 'right') {
