@@ -11,6 +11,7 @@ export default function Login() {
     });
     const isFirstRender = useRef(true);
     const [errors, setErrors] = useState({});
+    const [isError, setIsError] = useState(true);
     const schema = Joi.object({
         userName: Joi.string().min(5).max(15).required(),
         password: Joi.string().required(),
@@ -33,6 +34,7 @@ export default function Login() {
         });
 
         setErrors(err);
+        setIsError(Boolean(validation.error));
     }, [form]);
 
     const login = async ev => {
@@ -75,7 +77,7 @@ export default function Login() {
                     {errors.password && <div className="error">{errors.password}</div>}
                 </label>
 
-                <button onClick={login}>התחבר</button>
+                <button onClick={login} disabled={isError}>התחבר</button>
             </form>
 
             <Link to="/signup">להרשמה לחץ כאן</Link>

@@ -65,35 +65,39 @@ export default function Articles() {
                 </Link>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>כותרת</th>
-                        <th>תאריך יצירה</th>
-                        <th>תאריך פרסום</th>
-                        <th>צפיות</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        articles.map((art, i) =>
-                            <tr key={art.id} onDoubleClick={() => goToEdit(art.id)}>
-                                <td>{i + 1}</td>
-                                <td>{art.headline}</td>
-                                <td>{moment(art.addedTime).format("DD/MM/YY")}</td>
-                                <td>{moment(art.publishDate).format("DD/MM/YY")}</td>
-                                <td>{art.views}</td>
-                                <td>
-                                    <button className="green" onClick={() => goToEdit(art.id)}><i className="fa fa-edit"></i></button>
-                                    <button className="red" onClick={() => remove(art.id)}><i className="fa fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+            {
+                articles.length ?
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>כותרת</th>
+                            <th>תאריך יצירה</th>
+                            <th>תאריך פרסום</th>
+                            <th>צפיות</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            articles.map((art, i) =>
+                                <tr key={art.id} onDoubleClick={() => goToEdit(art.id)}>
+                                    <td>{i + 1}</td>
+                                    <td>{art.headline}</td>
+                                    <td>{moment(art.addedTime).format("DD/MM/YY")}</td>
+                                    <td>{moment(art.publishDate).format("DD/MM/YY")}</td>
+                                    <td>{art.views}</td>
+                                    <td>
+                                        <button className="green" onClick={() => goToEdit(art.id)}><i className="fa fa-edit"></i></button>
+                                        <button className="red" onClick={() => remove(art.id)}><i className="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table> :
+                <p className="noData">אין עדיין כתבות...</p>
+            }
         </div>
     )
 }
