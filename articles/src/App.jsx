@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import Articles from './components/Articles';
 import ArticleAdd from './components/ArticleAdd';
 import RecycleBin from './components/RecycleBin';
+import Signup from './components/Signup';
 
 export const MyContext = createContext();
 
@@ -62,7 +63,13 @@ function App() {
     <MyContext.Provider value={{ snackbar, setIsLoader, setUser }}>
       {user && <header>ברוך הבא {user.fullName} <button className='logout' onClick={logout}>התנתק</button></header>}
 
-      {user === null && <Login />}
+      {
+        user === null && 
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<Login />} />
+        </Routes>
+      }
       {
         user && 
         <Routes>
@@ -70,6 +77,7 @@ function App() {
           <Route path="/add" element={<ArticleAdd />} />
           <Route path="/article/:articleId" element={<ArticleAdd />} />
           <Route path="/recycle-bin" element={<RecycleBin />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       }
 

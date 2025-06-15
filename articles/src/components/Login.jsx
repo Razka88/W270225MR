@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { MyContext } from "../App";
 import Joi from 'joi';
 import { JOI_HEBREW } from "../joi-hebrew";
+import { Link } from "react-router";
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -76,6 +77,8 @@ export default function Login() {
 
                 <button onClick={login}>התחבר</button>
             </form>
+
+            <Link to="/signup">להרשמה לחץ כאן</Link>
         </>
     )
 }
