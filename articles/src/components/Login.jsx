@@ -9,6 +9,8 @@ export default function Login() {
         password: '',
     });
 
+    const [errors, setErrors] = useState({});
+
     const schema = Joi.object({
         userName: Joi.string().min(5).max(15).required(),
         password: Joi.string().required(),
@@ -17,9 +19,15 @@ export default function Login() {
     const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
     useEffect(() => {
-        const validation = schema.validate(form, { abortEarly: false, messages: { he: JOI_HEBREW }, errors: { language: 'he' } });
+        const options = { abortEarly: false, messages: { he: JOI_HEBREW }, errors: { language: 'he' } };
+        const validation = schema.validate(form, options);
+        const err = {};
 
-        console.log(validation.error?.details)
+        validation.error?.details.forEach(x => {
+            err[x.context.key] = x.message;
+        });
+
+        setErrors(err);
     }, [form]);
 
     const login = async ev => {
@@ -50,14 +58,16 @@ export default function Login() {
             <h1>התחברות</h1>
 
             <form>
-                <label>
+                <label className={errors.userName ? 'errorField' : ''}>
                     שם משתמש:
                     <input type="text" value={form.userName} onChange={ev => setForm({ ...form, userName: ev.target.value })} />
+                    {errors.userName && <div className="error">{errors.userName}</div>}
                 </label>
 
-                <label>
+                <label className={errors.password ? 'errorField' : ''}>
                     סיסמה:
                     <input type="password" value={form.password} onChange={ev => setForm({ ...form, password: ev.target.value })} />
+                    {errors.password && <div className="error">{errors.password}</div>}
                 </label>
 
                 <button onClick={login}>התחבר</button>
