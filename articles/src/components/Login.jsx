@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { MyContext } from "../App";
 import Joi from 'joi';
 import { JOI_HEBREW } from "../joi-hebrew";
@@ -16,32 +16,33 @@ export default function Login() {
 
     const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
-    const login = async ev => {
-        ev.preventDefault();
-
+    useEffect(() => {
         const validation = schema.validate(form, { abortEarly: false, messages: { he: JOI_HEBREW }, errors: { language: 'he' } });
 
-        console.log(validation)
+        console.log(validation.error?.details)
+    }, [form]);
 
-        // setIsLoader(true);
+    const login = async ev => {
+        ev.preventDefault();
+        setIsLoader(true);
 
-        // const res = await fetch(`https://api.shipap.co.il/login`, {
-        //     credentials: 'include',
-        //     method: 'POST',
-        //     headers: {'Content-type': 'application/json'},
-        //     body: JSON.stringify(form),
-        // });
+        const res = await fetch(`https://api.shipap.co.il/login`, {
+            credentials: 'include',
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(form),
+        });
 
-        // if (res.ok) {
-        //     const user = await res.json();
-        //     snackbar(`${user.fullName} התחבר בהצלחה`);
-        //     setUser(user);
-        // } else {
-        //     const err = await res.text();
-        //     snackbar(err);
-        // }
+        if (res.ok) {
+            const user = await res.json();
+            snackbar(`${user.fullName} התחבר בהצלחה`);
+            setUser(user);
+        } else {
+            const err = await res.text();
+            snackbar(err);
+        }
 
-        // setIsLoader(false);
+        setIsLoader(false);
     }
 
     return (
