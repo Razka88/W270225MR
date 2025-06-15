@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { MyContext } from "../App";
 import Joi from 'joi';
 import { JOI_HEBREW } from "../joi-hebrew";
@@ -8,9 +8,8 @@ export default function Login() {
         userName: '',
         password: '',
     });
-
+    const isFirstRender = useRef(true);
     const [errors, setErrors] = useState({});
-
     const schema = Joi.object({
         userName: Joi.string().min(5).max(15).required(),
         password: Joi.string().required(),
@@ -19,7 +18,12 @@ export default function Login() {
     const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
     useEffect(() => {
-        const options = { abortEarly: false, messages: { he: JOI_HEBREW }, errors: { language: 'he' } };
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        const options = { messages: { he: JOI_HEBREW }, errors: { language: 'he' } };
         const validation = schema.validate(form, options);
         const err = {};
 
