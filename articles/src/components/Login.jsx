@@ -1,5 +1,7 @@
 import { useContext, useState } from "react"
 import { MyContext } from "../App";
+import Joi from 'joi';
+import { JOI_HEBREW } from "../joi-hebrew";
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -7,29 +9,39 @@ export default function Login() {
         password: '',
     });
 
+    const schema = Joi.object({
+        userName: Joi.string().min(5).max(15).required(),
+        password: Joi.string().required(),
+    });
+
     const { snackbar, setIsLoader, setUser } = useContext(MyContext);
 
     const login = async ev => {
         ev.preventDefault();
-        setIsLoader(true);
 
-        const res = await fetch(`https://api.shipap.co.il/login`, {
-            credentials: 'include',
-            method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify(form),
-        });
+        const validation = schema.validate(form, { abortEarly: false, messages: { he: JOI_HEBREW }, errors: { language: 'he' } });
 
-        if (res.ok) {
-            const user = await res.json();
-            snackbar(`${user.fullName} התחבר בהצלחה`);
-            setUser(user);
-        } else {
-            const err = await res.text();
-            snackbar(err);
-        }
+        console.log(validation)
 
-        setIsLoader(false);
+        // setIsLoader(true);
+
+        // const res = await fetch(`https://api.shipap.co.il/login`, {
+        //     credentials: 'include',
+        //     method: 'POST',
+        //     headers: {'Content-type': 'application/json'},
+        //     body: JSON.stringify(form),
+        // });
+
+        // if (res.ok) {
+        //     const user = await res.json();
+        //     snackbar(`${user.fullName} התחבר בהצלחה`);
+        //     setUser(user);
+        // } else {
+        //     const err = await res.text();
+        //     snackbar(err);
+        // }
+
+        // setIsLoader(false);
     }
 
     return (
