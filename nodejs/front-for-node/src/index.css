@@ -239,15 +239,15 @@ tr td:last-child {
   white-space: nowrap;
 }
 
-.Articles {
+.Users {
   display: inline-block;
 }
 
-.Articles a {
+.Users a {
   text-decoration: none;
 }
 
-.Articles .add {
+.add {
   background-color: #61d9fa;
   color: #282c34;
   width: initial;
@@ -260,7 +260,7 @@ label {
   text-align: right;
 }
 
-.Articles form {
+.Users form {
   width: 600px;
 }
 
@@ -289,4 +289,47 @@ a {
   font-size: 2em;
   color: white;
   font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: #000000bf;
+  padding-top: 100px;
+}
+
+.modal form {
+  animation: zoomIn 0.5s ease-in-out;
+}
+
+.modal .close {
+  background: none;
+  width: initial;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 6px;
+  font-size: 3em;
+  font-weight: normal;
+  transition: 0.3s;
+}
+
+.modal .close:hover {
+  scale: 1.3;
+}
+
+.modal .close:active {
+  color: red;
+  scale: 0.9;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
