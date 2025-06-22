@@ -43,6 +43,20 @@ export default function Users() {
         }
     }
 
+    const remove = async id => {
+        if (!confirm("האם למחוק את היוזר?")) {
+            return;
+        }
+
+        const res = await fetch(`http://localhost:3000/users/${id}`, {
+            method: 'DELETE',
+        });
+
+        if (res.ok) {
+            setUsers(users.filter(x => x._id != id));
+        }
+    }
+
     return (
         <div>
             <br />
@@ -74,6 +88,7 @@ export default function Users() {
                         <th>#</th>
                         <th>שם פרטי</th>
                         <th>שם משפחה</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,6 +98,7 @@ export default function Users() {
                                 <td>{i + 1}</td>
                                 <td>{u.firstName}</td>
                                 <td>{u.lastName}</td>
+                                <td><button className="red" onClick={() => remove(u._id)}>x</button></td>
                             </tr>
                         )
                     }
