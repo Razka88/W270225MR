@@ -19,6 +19,28 @@ export default function Users() {
         getUsers();
     }, []);
 
+    const addUser = async ev => {
+        ev.preventDefault();
+        const { firstName, lastName } = ev.target.elements;
+
+        const res = await fetch(`http://localhost:3000/users`, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                firstName: firstName.value,
+                lastName: lastName.value,
+            }),
+        });
+
+        if (res.ok) {
+            const item = await res.json();
+            setUsers([item, ...users]);
+
+            firstName.value = "";
+            lastName.value = "";
+        }
+    }
+
     return (
         <div>
             <br />
@@ -30,7 +52,7 @@ export default function Users() {
                 <div className="modal">
                     <button className="close" onClick={() => setIsModal(false)}>X</button>
 
-                    <form>
+                    <form onSubmit={addUser}>
                         <label>
                             שם פרטי
                             <input type="text" id="firstName" />
