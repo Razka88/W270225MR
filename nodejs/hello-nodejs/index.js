@@ -24,15 +24,15 @@ app.get('/', (req, res) => {
     });
 });
 
+const schema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+});
+
+const User = mongoose.model("users", schema);
+
 // יירוט בקשה עם ניתוב /users
-app.get("/users", (req, res) => {
-    res.send([
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-        { firstName: 'דני', lastName: 'שובבני' },
-    ]);
+app.get("/users", async (req, res) => {
+    const data = await User.find();
+    res.send(data);
 });
