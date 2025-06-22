@@ -56,3 +56,8 @@ app.post("/users", async (req, res) => {
     const newUser = await user.save();
     res.send(newUser);
 });
+
+app.delete("/users/:id", async (req, res) => {
+    await User.findByIdAndDelete(req.params.id);
+    res.end();
+});
