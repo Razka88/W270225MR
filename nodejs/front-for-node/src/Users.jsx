@@ -9,6 +9,7 @@ export default function Users() {
 
         if (res.ok) {
             const data = await res.json();
+            data.reverse();
             setUsers(data);
         } else {
             console.log(res.status);
