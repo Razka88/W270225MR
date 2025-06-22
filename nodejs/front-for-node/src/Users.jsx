@@ -35,6 +35,7 @@ export default function Users() {
         if (res.ok) {
             const item = await res.json();
             setUsers([item, ...users]);
+            setIsModal(false);
 
             firstName.value = "";
             lastName.value = "";

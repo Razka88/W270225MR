@@ -13,6 +13,8 @@ main().catch(err => console.log(err));
 // שימוש ב-Express
 const app = express();
 
+app.use(express.json());
+
 app.use(cors({
     origin: true,
     credentials: true,
@@ -43,4 +45,14 @@ const User = mongoose.model("users", schema);
 app.get("/users", async (req, res) => {
     const data = await User.find();
     res.send(data);
+});
+
+app.post("/users", async (req, res) => {
+    const user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+    });
+
+    const newUser = await user.save();
+    res.send(newUser);
 });
