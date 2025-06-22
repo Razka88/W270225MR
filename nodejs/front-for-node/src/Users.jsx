@@ -57,6 +57,12 @@ export default function Users() {
         }
     }
 
+    const edit = async id => {
+        const user = users.find(x => x._id == id);
+
+        console.log(user);
+    }
+
     return (
         <div>
             <br />
@@ -98,7 +104,10 @@ export default function Users() {
                                 <td>{i + 1}</td>
                                 <td>{u.firstName}</td>
                                 <td>{u.lastName}</td>
-                                <td><button className="red" onClick={() => remove(u._id)}>x</button></td>
+                                <td>
+                                    <button onClick={() => edit(u._id)}>✏️</button>
+                                    <button onClick={() => remove(u._id)}>❌</button>
+                                </td>
                             </tr>
                         )
                     }

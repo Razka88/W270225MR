@@ -215,24 +215,11 @@ td button {
   padding: 5px 8px;
   transition: .3s;
   width: auto;
+  transition: 0.3s;
 }
 
 td button:hover {
-  background-color: #3c3c3c;
-  color: white;
-  box-shadow: 0 0 4px #d6d6d6;
-}
-
-td button.green:hover {
-  background-color: #3dbf23;
-}
-
-td button.red:hover {
-  background-color: #bf2323;
-}
-
-td button:active {
-  scale: 1.3;
+  scale: 1.4 !important;
 }
 
 tr td:last-child {
