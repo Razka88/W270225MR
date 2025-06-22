@@ -33,7 +33,7 @@ export default function Users() {
                 <tbody>
                     {
                         users.map((u, i) =>
-                            <tr>
+                            <tr key={u._id}>
                                 <td>{i + 1}</td>
                                 <td>{u.firstName}</td>
                                 <td>{u.lastName}</td>
