@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 // חיבור למסד הנתונים
@@ -11,6 +12,13 @@ main().catch(err => console.log(err));
 
 // שימוש ב-Express
 const app = express();
+
+app.use(cors({
+    origin: true,
+    credentials: true,
+    methods: 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    allowedHeaders: 'Content-Type, Accept, Authorization',
+}));
 
 // הפעלת השרת ושימוש בפורט
 app.listen(3000, () => {
