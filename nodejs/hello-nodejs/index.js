@@ -42,11 +42,20 @@ const schema = new mongoose.Schema({
 const User = mongoose.model("users", schema);
 
 // יירוט בקשה עם ניתוב /users
+// קבלת כל היוזרים
 app.get("/users", async (req, res) => {
     const data = await User.find();
     res.send(data);
 });
 
+// יירוט בקשה עם ניתוב /users/:userId
+// קבלת יוזר אחד לפי מזהה
+app.get("/users/:userId", async (req, res) => {
+    const data = await User.findById(req.params.userId);
+    res.send(data);
+});
+
+// הוספת יוזר
 app.post("/users", async (req, res) => {
     const user = new User({
         firstName: req.body.firstName,
@@ -57,6 +66,7 @@ app.post("/users", async (req, res) => {
     res.send(newUser);
 });
 
+// מחיקת יוזר
 app.delete("/users/:id", async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.end();
