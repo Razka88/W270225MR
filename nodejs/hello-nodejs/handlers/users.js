@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import express from 'express';
+import { Router } from 'express';
 
 const schema = new mongoose.Schema({
     firstName: String,
@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
 
 const User = mongoose.model("users", schema);
 
-const router = express.Router();
+const router = Router();
 
 // יירוט בקשה עם ניתוב /users
 // קבלת כל היוזרים
