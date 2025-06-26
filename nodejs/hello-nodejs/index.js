@@ -1,6 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import UsersRouter from './handlers/users.js';
 
 // חיבור למסד הנתונים
 async function main() {
@@ -34,40 +35,4 @@ app.get('/', (req, res) => {
     });
 });
 
-const schema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-});
-
-const User = mongoose.model("users", schema);
-
-// יירוט בקשה עם ניתוב /users
-// קבלת כל היוזרים
-app.get("/users", async (req, res) => {
-    const data = await User.find();
-    res.send(data);
-});
-
-// יירוט בקשה עם ניתוב /users/:userId
-// קבלת יוזר אחד לפי מזהה
-app.get("/users/:userId", async (req, res) => {
-    const data = await User.findById(req.params.userId);
-    res.send(data);
-});
-
-// הוספת יוזר
-app.post("/users", async (req, res) => {
-    const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-    });
-
-    const newUser = await user.save();
-    res.send(newUser);
-});
-
-// מחיקת יוזר
-app.delete("/users/:id", async (req, res) => {
-    await User.findByIdAndDelete(req.params.id);
-    res.end();
-});
+app.use('/users', UsersRouter);
