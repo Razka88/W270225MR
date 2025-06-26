@@ -4,18 +4,17 @@ import mongoose from 'mongoose';
 import UsersRouter from './handlers/users.js';
 
 // חיבור למסד הנתונים
-async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/full-stack-W270225MR');
-    console.log('mongodb connection');
-}
-
-main().catch(err => console.log(err));
+await mongoose.connect('mongodb://127.0.0.1:27017/full-stack-W270225MR');
+console.log('mongodb connection');
 
 // שימוש ב-Express
 const app = express();
 
+// מגדיר שהנתונים שאנו קולטים בגוף הבקשה הם מסוג ג'סון
 app.use(express.json());
 
+// הגדרות Cors
+// לאיזה דומיינים מאשר, מתודות ועוד
 app.use(cors({
     origin: true,
     credentials: true,
@@ -35,4 +34,5 @@ app.get('/', (req, res) => {
     });
 });
 
+// שימוש בנקודות הקצה של היוזרים
 app.use('/users', UsersRouter);
